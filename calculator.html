@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js"></script>
+    
     <style>
         .title {
             font-size: 2.5rem;
@@ -83,26 +86,63 @@
 <body>
     <div class="title">Calculator</div>
     <div class="calculator">
-        <div class="flex-display" id="display">0</div>
+        <input type="text" class="flex-display" id="result" value="0" readonly>
         <div class="container">
-            <input type="button" class="num" value="1">
-            <input type="button" class="num" value="2">
-            <input type="button" class="num" value="3">
-            <input type="button" class="op" value="+">
-            <input type="button" class="num" value="4">
-            <input type="button" class="num" value="5">
-            <input type="button" class="num" value="6">
-            <input type="button" class="op" value="-">
-            <input type="button" class="num" value="7">
-            <input type="button" class="num" value="8">
-            <input type="button" class="num" value="9">
-            <input type="button" class="op" value="*">
-            <input type="button" class="num" value="Cl">
-            <input type="button" class="num" value="0">
-            <input type="button" class="num" value="=">
-            <input type="button" class="op" value="/">
+            <input type="button" class="num" value="1" onclick="dis('1')">
+            <input type="button" class="num" value="2" onclick="dis('2')">
+            <input type="button" class="num" value="3" onclick="dis('3')">
+            <input type="button" class="op" value="+" onclick="dis('+')">
+            <input type="button" class="num" value="4" onclick="dis('4')">
+            <input type="button" class="num" value="5" onclick="dis('5')">
+            <input type="button" class="num" value="6" onclick="dis('6')">
+            <input type="button" class="op" value="-" onclick="dis('-')">
+            <input type="button" class="num" value="7" onclick="dis('7')">
+            <input type="button" class="num" value="8" onclick="dis('8')">
+            <input type="button" class="num" value="9" onclick="dis('9')">
+            <input type="button" class="op" value="*" onclick="dis('*')">
+            <input type="button" class="num" value="Cl" onclick="clr()">
+            <input type="button" class="num" value="0" onclick="dis('0')">
+            <input type="button" class="num" value="=" onclick="solve()">
+            <input type="button" class="op" value="/" onclick="dis('/')">
         </div>
     </div>
+    <script>
+        function dis(val) {
+            // Getting the value of the current input field
+            var currentVal = document.getElementById("result").value;
+            // If the current value is 0, clear it before adding the next number/operator
+            if (currentVal === '0') {
+                document.getElementById("result").value = val;
+            } else {
+                document.getElementById("result").value += val;
+            }
+        }
+
+        function solve() {
+            let x = document.getElementById("result").value;
+            try {
+                let y = math.evaluate(x);
+                document.getElementById("result").value = y;
+            } catch (e) {
+                document.getElementById("result").value = "Error";
+            }
+        }
+
+        function clr() {
+            document.getElementById("result").value = "0";
+        }
+
+        window.addEventListener("keydown", function (event) {
+            const key = event.key;
+            if ("0123456789+-*/".includes(key)) {
+                dis(key);
+            } else if (key === "Enter") {
+                solve();
+            } else if (key === "Escape") {
+                clr();
+            }
+        });
+    </script>
 </body>
 
 </html>
