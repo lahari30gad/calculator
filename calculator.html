@@ -21,7 +21,7 @@
             background-color: #f0f0f0;
             flex-direction: column;
         }
-        .flex-calc-container {
+        .calculator {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -45,15 +45,15 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
-        .btns-container {
+        .container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
             width: 100%;
         }
 
-        .num-btn,
-        .op-btn {
+        .num,
+        .op {
             width: 70px;
             height: 70px;
             border-radius: 50%;
@@ -64,17 +64,17 @@
             cursor: pointer;
         }
 
-        .op-btn {
+        .op {
             background-color: #f3970d;
         }
 
-        .num-btn:focus,
-        .op-btn:focus {
+        .num:focus,
+        .op:focus {
             outline: none;
         }
 
-        .num-btn:hover,
-        .op-btn:hover {
+        .num:hover,
+        .op:hover {
             opacity: 0.8;
         }
     </style>
@@ -82,25 +82,25 @@
 
 <body>
     <div class="title">Calculator</div>
-    <div class="flex-calc-container">
+    <div class="calculator">
         <div class="flex-display" id="display">0</div>
-        <div class="btns-container">
-            <input type="button" class="num-btn" value="1">
-            <input type="button" class="num-btn" value="2">
-            <input type="button" class="num-btn" value="3">
-            <input type="button" class="op-btn" value="+">
-            <input type="button" class="num-btn" value="4">
-            <input type="button" class="num-btn" value="5">
-            <input type="button" class="num-btn" value="6">
-            <input type="button" class="op-btn" value="-">
-            <input type="button" class="num-btn" value="7">
-            <input type="button" class="num-btn" value="8">
-            <input type="button" class="num-btn" value="9">
-            <input type="button" class="op-btn" value="*">
-            <input type="button" class="num-btn" value="Cl">
-            <input type="button" class="num-btn" value="0">
-            <input type="button" class="num-btn" value="=">
-            <input type="button" class="op-btn" value="/">
+        <div class="container">
+            <input type="button" class="num" value="1">
+            <input type="button" class="num" value="2">
+            <input type="button" class="num" value="3">
+            <input type="button" class="op" value="+">
+            <input type="button" class="num" value="4">
+            <input type="button" class="num" value="5">
+            <input type="button" class="num" value="6">
+            <input type="button" class="op" value="-">
+            <input type="button" class="num" value="7">
+            <input type="button" class="num" value="8">
+            <input type="button" class="num" value="9">
+            <input type="button" class="op" value="*">
+            <input type="button" class="num" value="Cl">
+            <input type="button" class="num" value="0">
+            <input type="button" class="num" value="=">
+            <input type="button" class="op" value="/">
         </div>
     </div>
 </body>
